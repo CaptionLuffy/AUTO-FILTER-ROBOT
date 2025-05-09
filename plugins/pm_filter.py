@@ -378,11 +378,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await d.delete()
             return
         file_id = query.data.split('#', 1)[1]
-        NOBITA = await client.send_cached_media(
+        log = await client.send_cached_media(
             chat_id=BIN_CHANNEL,
             file_id=file_id)
-        online = f"https://{URL}/watch/{NOBITA.id}?hash={get_hash(NOBITA)}"
-        download = f"https://{URL}/{NOBITA.id}?hash={get_hash(NOBITA)}"
+        online = f"https://{URL}/watch/{log.id}"
+        download = f"https://{URL}/{log.id}"
         btn= [[
             InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=online),
             InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
