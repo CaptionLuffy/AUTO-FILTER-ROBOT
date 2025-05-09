@@ -16,6 +16,10 @@ def is_enabled(value, default):
         return False
     else:
         return default
+        
+def is_valid_ip(ip):
+    ip_pattern = r'\b(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
+    return re.match(ip_pattern, ip) is not None
 
 #main variables
 API_ID = int(environ.get('API_ID', ''))
@@ -35,7 +39,19 @@ DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in enviro
 
 #this vars is for when heroku or koyeb acc get banned, then change this vars as your file to link bot name
 BIN_CHANNEL = int(environ.get('BIN_CHANNEL', ''))
-URL = environ.get('URL', '')
+URL = environ.get("URL", "") #if heroku then paste the app link here ex: https://heroku......./
+if len(URL) == 0:
+    print('Error - URL is missing, exiting now')
+    exit()
+else:
+    if URL.startswith(('https://', 'http://')):
+        if not URL.endswith("/"):
+            URL += '/'
+    elif is_valid_ip(URL):
+        URL = f'http://{URL}/'
+    else:
+        print('Error - URL is not valid, exiting now')
+        exit()
 
 # verify system vars
 IS_VERIFY = is_enabled('IS_VERIFY', False)
