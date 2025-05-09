@@ -21,7 +21,7 @@ async def style_buttons(c, m, cb=False):
         reply = await m.reply_text(f"{font(title)}")
         messages.append(reply)
 
-    d=await m.reply_text(text="<b>ʙʏ : @TechifyBots</b>")
+    #d=await m.reply_text(text="<b>ʙʏ</b>")
 
     async def delete_messages():
         for msg in messages:
@@ -31,7 +31,7 @@ async def style_buttons(c, m, cb=False):
     await asyncio.sleep(120)
     await delete_messages()
     await m.delete()
-    await d.delete()
+    #await d.delete()
 
 @Client.on_callback_query(filters.regex('^style'))
 async def style(c, m):
