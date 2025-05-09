@@ -30,6 +30,7 @@ class temp(object):
     U_NAME = None
     B_NAME = None
     B_LINK = None
+    BOT = None
     SETTINGS = {}
     FILES_ID = {}
     USERS_CANCEL = False
