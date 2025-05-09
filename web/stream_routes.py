@@ -38,7 +38,7 @@ async def old_stream_handler(request):
 
 async def media_streamer(request, message_id: int):
     range_header = request.headers.get('Range', 0)
-    media_msg = await temp.ME.get_messages(BIN_CHANNEL, message_id)
+    media_msg = await temp.BOT.get_messages(BIN_CHANNEL, message_id)
     file_properties = await TGCustomYield().generate_file_properties(media_msg)
     file_size = file_properties.file_size
 
