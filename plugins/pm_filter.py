@@ -381,8 +381,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         log = await client.send_cached_media(
             chat_id=BIN_CHANNEL,
             file_id=file_id)
-        online = f"{URL}/watch/{log.id}"
-        download = f"{URL}/{log.id}"
+        online = f"{URL}watch/{log.id}"
+        download = f"{URL}{log.id}"
         btn= [[
             InlineKeyboardButton("ᴡᴀᴛᴄʜ ᴏɴʟɪɴᴇ", url=online),
             InlineKeyboardButton("ꜰᴀsᴛ ᴅᴏᴡɴʟᴏᴀᴅ", url=download)
