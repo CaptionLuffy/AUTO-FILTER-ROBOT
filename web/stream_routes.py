@@ -13,7 +13,7 @@ routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
-    raise web.HTTPFound('https://telegram.me/botsync')
+    raise web.HTTPFound('https://telegram.me/ps_updates')
 
 
 @routes.get("/watch/{message_id}")
