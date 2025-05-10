@@ -1,5 +1,5 @@
 from aiohttp import web
-from .route import routes
+from web.stream_routes import routes
 from asyncio import sleep 
 from datetime import datetime
 from database.users_chats_db import db
